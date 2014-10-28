@@ -15,10 +15,16 @@ server.get('/', function(req, res) {
 	res.render('index')
 });
 
-io.on('connection', function(socket){
-	console.log('a user connected');
-	socket.on('disconnect', function(){
-		console.log('a user disconnected');
+// io.on('connection', function(socket){
+// 	console.log('a user connected');
+// 	socket.on('disconnect', function(){
+// 		console.log('a user disconnected');
+// 	});
+// });
+
+io.on('connection', function(socket) {
+	socket.on('chat message', function(msg) {
+		console.log('message:' + msg)
 	});
 });
 
